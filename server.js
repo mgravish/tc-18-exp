@@ -27,11 +27,13 @@ io.on('connection', function(socket){
   socket.emit('initName', data);
 
 
-  console.log(name + ' has joined!');
+  console.log('User ' + userNames[socket.id] + ' has joined!');
   io.emit('user joined');
 
   socket.on('disconnect', function(){
-    console.log('user disconnected');
+    var nameToDelete = userNames[socket.id];
+    delete userNames[socket.id];
+    console.log('User ' + nameToDelete + ' has disconnected');
   });
 
   socket.on('chat message', function(msg){

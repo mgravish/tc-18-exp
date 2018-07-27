@@ -23,6 +23,9 @@
     <script>
       $(function () {
         var socket = io();
+        socket.on('initName', (data) => {
+          $(document).attr("title", 'User '+data.name)
+        });
         $('form').submit(function(){
           socket.emit('chat message', $('#m').val());
           $('#m').val('');
