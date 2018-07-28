@@ -28,9 +28,10 @@ io.on('connection', function(socket){
 
 
   console.log('User ' + userNames[socket.id] + ' has joined!');
-  io.emit('user joined');
+  io.emit('user joined', data);
 
   socket.on('disconnect', function(){
+    io.emit('user left', data);
     var nameToDelete = userNames[socket.id];
     delete userNames[socket.id];
     console.log('User ' + nameToDelete + ' has disconnected');

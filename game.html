@@ -14,13 +14,18 @@
         const socket = io('http://localhost:3000', {
           autoConnect: true
         });
-        socket.on('user joined', function(uID){
-          click();
+        socket.on('user joined', function(data){
+          console.log('Game: User '+data.name+' has joined.');
+          addUser(data.name);
+        });
+        socket.on('user left', function(data){
+          console.log('Game: User '+data.name+' has left.');
+          removeUser(data.name);
         });
         socket.on('chat message', function(msg, userName){
           if(msg === 'grow'){
             console.log('grow(parseInt('+userName+'))');
-            grow(parseInt(userName));
+            grow(userName);
           }
         });
       });

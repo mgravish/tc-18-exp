@@ -3,6 +3,7 @@ var limegreen = '#14ffc8';
 var darkpurple = '#5d3b66';
 var mustard = '#ffcc21';
 var palette = [limegreen, darkpurple, mustard];
+var dots={};
 
 function setup() {
     pixelDensity(2.0);
@@ -13,18 +14,24 @@ function setup() {
     cnv.style('top','0');
     cnv.style('z-index','1');
     glitchArray = new Group();
-    cnv.mousePressed(click);
-    i=new Array();
-    click();
+    dots={};
+    dotsArray = new Array();
 }
 
-function click() {
-    cont=true;
-    i.push(new Dot());
+function addUser(uID) {
+    console.log('Adding User Dot: '+ uID);
+    // dotsArray.push(new Dot())
+    dots[uID] = new Dot();
 }
 
-function grow(ID) {
-    i[ID].grow();
+function removeUser(uID) {
+    console.log('Deleting User Dot: '+uID);
+    dots[uID].remove();
+}
+
+function grow(uID) {
+    console.log('Growing User Dot: '+uID);
+    dots[uID].grow();
 }
 
 function draw() {
@@ -40,20 +47,25 @@ function draw() {
 }
 
 function Dot() {
-    this.colliderSize = 40;
-    this.size = 40;
     var glitch = createSprite(cnv.width/2+random(20), cnv.height/2+random(20));
     glitch.fill = random(palette);
+    glitch.size = 40;
+    glitch.setCollider("circle", 0, 0, glitch.size);
+    glitch.mass = 3;
+
     glitch.draw = function() { 
         fill(glitch.fill);
-        ellipse(0,0,40,40);
+        ellipse(0,0,glitch.size,glitch.size);
     };
-    glitch.setCollider("circle", 0, 0, this.colliderSize);
-    glitch.mass = 3;
+    
     glitchArray.add(glitch);
 
+    this.remove = function () {
+        remove(this);
+    }
+
     this.grow = function() {
-        this.colliderSize += 100;
-        glitch.setCollider("circle", 0, 0, this.colliderSize);
+        glitch.size += 100;
+        glitch.setCollider("circle", 0, 0, glitch.size);
     }
 }
