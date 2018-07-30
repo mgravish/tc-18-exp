@@ -1,18 +1,18 @@
 <!doctype html>
 <html>
   <head>
-    <script src="jquery-3.3.1.min.js"></script>
-    <script src='p5.min.js'></script>
-    <script src='p5.dom.min.js'></script>
-    <script src='p5.play.js'></script>   
-    <script src='crowd.js'></script>
+    <script src="js/libs/jquery-3.3.1.min.js"></script>
+    <script src='js/libs/p5.min.js'></script>
+    <script src='js/libs/p5.dom.min.js'></script>
+    <script src='js/libs/p5.play.js'></script>   
+    <script src="js/libs/socket.io.js"></script>
+    <script src='js/games/crowd.js'></script>
   </head>
   <body>
-    <script src="socket.io.js"></script>
     <script>
       $(function () {
         const socket = io('http://localhost:3000', {
-          autoConnect: true
+          query: 'game=true'
         });
         socket.on('user joined', function(data){
           console.log('Game: User '+data.name+' has joined.');

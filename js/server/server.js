@@ -1,11 +1,11 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var path = require("path");
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/client.html');
+  res.sendFile(path.join(__dirname, '../..', '/client.html'));
 });
-
 
 // Assigning Unique Usernames
 var userNames = {};
@@ -17,7 +17,6 @@ var getDefaultName = function(){
     return String(cnt);
 };
 
-
 // Connection Code
 io.on('connection', function(socket){
 
@@ -26,9 +25,11 @@ io.on('connection', function(socket){
   data = {name: name};
   socket.emit('initName', data);
 
-
-  console.log('User ' + userNames[socket.id] + ' has joined!');
-  io.emit('user joined', data);
+  //Don't emit 'User Joined' event if the game joins
+  if(!socket.handshake.query['game']) { 
+    console.log('User ' + userNames[socket.id] + ' has joined!');
+    io.emit('user joined', data);
+  }
 
   socket.on('disconnect', function(){
     io.emit('user left', data);

@@ -14,31 +14,30 @@ function setup() {
     cnv.style('top','0');
     cnv.style('z-index','1');
     glitchArray = new Group();
-    dots={};
+    users={};
     dotsArray = new Array();
 }
 
 function addUser(uID) {
     console.log('Adding User Dot: '+ uID);
-    // dotsArray.push(new Dot())
-    dots[uID] = new Dot();
+    users[uID] = new Dot();
 }
 
 function removeUser(uID) {
     console.log('Deleting User Dot: '+uID);
-    dots[uID].remove();
+    users[uID].remove();
 }
 
 function grow(uID) {
     console.log('Growing User Dot: '+uID);
-    dots[uID].grow();
+    users[uID].grow();
 }
 
 function draw() {
     background(255, 255, 255);
-    for(var i=0; i<allSprites.length; i++)
+    for(var i=0; i<glitchArray.length; i++)
     {
-        var mySprite = allSprites[i];
+        var mySprite = glitchArray[i];
         mySprite.attractionPoint(.2, windowWidth/2, windowHeight/2);
         mySprite.maxSpeed = 4;
         mySprite.displace(glitchArray);
@@ -60,9 +59,9 @@ function Dot() {
     
     glitchArray.add(glitch);
 
-    this.remove = function () {
-        remove(this);
-    }
+    // this.remove = function () {
+    //     remove(this);
+    // }
 
     this.grow = function() {
         glitch.size += 100;
