@@ -7,8 +7,9 @@ var path = require("path");
 app.use(express.static(__dirname + '../../../..' + '/public'));
 app.get('/', function(req, res) {
   var options = {
-    root: __dirname + '../../..' + '/public',
+    root: __dirname + '../../..',
   };
+  res.sendFile('client.html', options);
 });
 
 var users = {};
