@@ -59,7 +59,10 @@ io.on('connection', function(socket) {
 
 });
 
-http.listen(5000, function(){
+var server_port = process.env.YOUR_PORT || process.env.PORT || 80;
+var server_host = process.env.YOUR_HOST || '0.0.0.0';
+
+http.listen(server_port, server_host, function(){
   console.log('listening on *:5000');
 });
 
