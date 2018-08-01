@@ -14,8 +14,8 @@
     <div  class='title' id='waiting-copy'>Waiting for users to join...</div>
     <script>
       $(function () {
-        const socket = io(), {
-          query: 'game=true'
+        const socket = io({
+          query: "game=true"
         });
         socket.on('user joined', function(data){
           console.log('Game: User '+data.name+' has joined.');
