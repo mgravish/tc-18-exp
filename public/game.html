@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="js/libs/jquery-3.3.1.min.js"></script>
+    <script src='js/libs/p5.min.js'></script>
+    <script src='js/libs/p5.dom.min.js'></script>
+    <script src='js/libs/p5.play.js'></script>   
+    <script src="js/libs/socket.io.js"></script>
+    <script src='js/games/dynamic-stickers.js'></script>
+    <link rel='stylesheet' href='css/game.css'>
+  </head>
+  <body>
+    <div id='game-container' ></div>
+    <div  class='title' id='waiting-copy'>Waiting for users to join...</div>
+    <script>
+      $(function () {
+        const socket = io('http://localhost:3000', {
+          query: 'game=true'
+        });
+        socket.on('user joined', function(data){
+          console.log('Game: User '+data.name+' has joined.');
+          $('#waiting-copy').fadeOut();
+          addUser(data.name);
+        });
+        socket.on('user left', function(data){
+          console.log('Game: User '+data+' has left.');
+          removeUser(data);
+        });
+        socket.on('chat message', function(msg, user){
+          //Key Commands
+          if(msg === 'up'){
+            pushUp(user.name);
+          }
+          if(msg === 'down'){
+            pushDown(user.name);
+          }
+          if(msg === 'left'){
+            pushLeft(user.name);
+          }
+          if(msg === 'right'){
+            pushRight(user.name);
+          }
+          if(msg === 'grow'){
+            grow(user.name);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

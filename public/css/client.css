@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'Oscine-Regular';
+    src: url('Oscine_Trial_Rg.ttf');
+}
+
+@font-face {
+    font-family: 'Oscine-Bold';
+    src: url('Oscine_Trial_Bd.ttf');
+}
+
+@font-face {
+    font-family: 'Graphik-Regular';
+    src: url('Graphik-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Graphik-SemiBold';
+    src: url('Graphik-Semibold.otf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 62.5%;
+    margin: 0px;
+    font-family: 'Graphik-Regular';
+    background-color: #26164e;
+}
+
+form { 
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #26164e;
+    border-top: 1px solid #180c38;
+}
+form input {
+    font-family: 'Graphik-Regular';
+    background-color: #180c38;
+    color: white;
+    flex-grow: 1;
+    margin-right:10px;
+    border: 0;
+    padding: 10px;
+    padding-left:20px;
+    height: 3rem;
+    font-size: 1rem;
+    border-radius: 3px;
+}
+form input:focus {
+    border: 1px solid #6441a5;
+    outline:none;
+}
+form button {
+    font-family: 'Graphik-SemiBold';
+    font-size: .9rem;
+    letter-spacing: .05rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 3rem;
+    color: white;
+    background: #ff5759;
+    border: none;
+    border-radius: 3px;
+}
+#messages {
+    list-style-type: none;
+    padding: 0;
+    color: white;
+    font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
+}
+#messages li {
+    padding: 6px 20px;
+}
+#messages li:nth-child(odd) {
+    background: rgba(0,0,0,.15);
+}
+.username {
+    font-family: 'Graphik-SemiBold';
+    margin-right: 4px;
+}
