@@ -9,20 +9,20 @@ rad = 15;
 b = 0;
 
 function preload() {
-    img1 = loadImage('http://localhost:3000/_assets/stickers/1.png'); 
-    img2 = loadImage('http://localhost:3000/_assets/stickers/2.png');
-    img3 = loadImage('http://localhost:3000/_assets/stickers/3.png'); 
-    img4 = loadImage('http://localhost:3000/_assets/stickers/4.png'); 
-    img5 = loadImage('http://localhost:3000/_assets/stickers/5.png'); 
-    img6 = loadImage('http://localhost:3000/_assets/stickers/6.png'); 
-    img7 = loadImage('http://localhost:3000/_assets/stickers/7.png'); 
-    img8 = loadImage('http://localhost:3000/_assets/stickers/8.png'); 
-    img9 = loadImage('http://localhost:3000/_assets/stickers/9.png'); 
-    img10 = loadImage('http://localhost:3000/_assets/stickers/10.png');
-    img11 = loadImage('http://localhost:3000/_assets/stickers/11.png'); 
-    img12 = loadImage('http://localhost:3000/_assets/stickers/12.png'); 
-    img13 = loadImage('http://localhost:3000/_assets/stickers/13.png'); 
-    img14 = loadImage('http://localhost:3000/_assets/stickers/14.png'); 
+    // img1 = loadImage('http://localhost:3000/_assets/stickers/1.png'); 
+    // img2 = loadImage('http://localhost:3000/_assets/stickers/2.png');
+    // img3 = loadImage('http://localhost:3000/_assets/stickers/3.png'); 
+    // img4 = loadImage('http://localhost:3000/_assets/stickers/4.png'); 
+    // img5 = loadImage('http://localhost:3000/_assets/stickers/5.png'); 
+    // img6 = loadImage('http://localhost:3000/_assets/stickers/6.png'); 
+    // img7 = loadImage('http://localhost:3000/_assets/stickers/7.png'); 
+    // img8 = loadImage('http://localhost:3000/_assets/stickers/8.png'); 
+    // img9 = loadImage('http://localhost:3000/_assets/stickers/9.png'); 
+    // img10 = loadImage('http://localhost:3000/_assets/stickers/10.png');
+    // img11 = loadImage('http://localhost:3000/_assets/stickers/11.png'); 
+    // img12 = loadImage('http://localhost:3000/_assets/stickers/12.png'); 
+    // img13 = loadImage('http://localhost:3000/_assets/stickers/13.png'); 
+    // img14 = loadImage('http://localhost:3000/_assets/stickers/14.png'); 
 }
 
 function setup() {
