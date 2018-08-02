@@ -26,23 +26,8 @@
           console.log('Game: User '+data+' has left.');
           removeUser(data);
         });
-        socket.on('chat message', function(msg, user){
-          //Key Commands
-          if(msg === 'up'){
-            pushUp(user.name);
-          }
-          if(msg === 'down'){
-            pushDown(user.name);
-          }
-          if(msg === 'left'){
-            pushLeft(user.name);
-          }
-          if(msg === 'right'){
-            pushRight(user.name);
-          }
-          if(msg === 'grow'){
-            grow(user.name);
-          }
+        socket.on('draw', function(data){
+          userDraw(data);
         });
       });
     </script>

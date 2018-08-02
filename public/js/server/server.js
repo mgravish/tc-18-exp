@@ -4,6 +4,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require("path");
 
+// Set root directory and serve Client.html on connect
 app.use(express.static(__dirname + '../../../..' + '/public'));
 app.get('/', function(req, res) {
   var options = {
@@ -12,9 +13,8 @@ app.get('/', function(req, res) {
   res.sendFile('client.html', options);
 });
 
-var users = {};
-
 // Assigning Unique Usernames
+var users = {};
 var getDefaultName = function(){
     var cnt = 0;
     for (user in users) {
@@ -23,6 +23,7 @@ var getDefaultName = function(){
     return String(cnt);
 };
 
+// Assigning a random color to each user from a palette
 var getRandomColor = function(){
     var palette = ['#ffc35e', '#24c7f6', '#ff5a5a', '#6441a4'];
     var col = palette[Math.floor(Math.random() * palette.length)];
@@ -56,9 +57,14 @@ io.on('connection', function(socket) {
     io.emit('chat message', msg, users[socket.id]);
     console.log(users[socket.id].name+" "+msg)
   });
-
+  
+  socket.on('user drawing', function(msg){
+    io.emit('draw', msg);
+    console.log(users[socket.id].name+" "+msg)
+  });
 });
 
+// Begin listening for connections
 var server_port = process.env.PORT || 3000;
 var server_host = process.env.YOUR_HOST || '0.0.0.0';
 
